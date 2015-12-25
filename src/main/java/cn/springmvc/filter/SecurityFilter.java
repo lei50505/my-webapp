@@ -13,21 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import cn.springmvc.util.ConfigUtils;
+
 @Component
 public class SecurityFilter implements Filter {
-    
+
     private Logger log = Logger.getLogger(this.getClass());
-    
-    @Value("#{jdbc[driver]}")
-    private String driver;
 
     @Override
     public void destroy() {
-        
+
     }
 
     @Override
@@ -35,8 +33,8 @@ public class SecurityFilter implements Filter {
             FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        log.info("SecurityFilter过滤前");
-        if("1".equals(request.getParameter("id"))){
+        log.info("SecurityFilter过滤前 " + ConfigUtils.getString("db.driver"));
+        if ("1".equals(request.getParameter("id"))) {
             response.setContentType("application/json");
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             PrintWriter writer = response.getWriter();
@@ -46,12 +44,12 @@ public class SecurityFilter implements Filter {
             return;
         }
         chain.doFilter(request, response);
-        log.info("SecurityFilter过滤后");
+        log.info("SecurityFilter过滤后 " + ConfigUtils.getString("db.driver"));
     }
 
     @Override
     public void init(FilterConfig arg0) throws ServletException {
-        
+
     }
 
 }

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,16 +26,13 @@ public class GreetingController {
     @Autowired
     private UserService userService;
     
-    @Value("#{jdbc[driver]}")
-    private String driver;
-    
     private Logger log = Logger.getLogger(this.getClass());
     
     @RequestMapping(value="/",method=RequestMethod.GET)
     public ResponseEntity<Map<String, Object>> greeting() throws ServiceException{
         log.info("greeting");
         User u = new User(1,"10",1); 
-        userService.insert(u);
+        userService.add(u);
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("message", "Hello");
         log.info("success");

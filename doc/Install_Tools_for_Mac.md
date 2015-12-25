@@ -108,3 +108,20 @@ support-files/mysql.server restart
 support-files/mysql.server stop
 support-files/mysql.server status
 ```
+
+* 安装RabbitMQ
+
+```
+cd ~/Documents/dev/tools
+tar -zxvf ~/Downloads/rabbitmq-server-mac-standalone-3.6.0.tar.xz
+
+cd
+vi .zshrc
+export RABBITMQ_HOME=/Users/CAOLEI/Documents/dev/tools/rabbitmq_server-3.6.0
+export PATH=$RABBITMQ_HOME/sbin:$PATH
+
+sudo scutil --set HostName localhost
+rabbitmq-server
+rabbitmqctl stop
+rabbitmqctl status
+```

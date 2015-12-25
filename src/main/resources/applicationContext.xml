@@ -30,13 +30,15 @@
 		<property name="username" value="${db.user}"></property>
 		<property name="password" value="${db.password}"></property>
 	</bean>
-	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="ds"></property>
 		<property name="mapperLocations" value="classpath:cn/springmvc/dao/*.xml"></property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="cn.springmvc.dao"></property>
-		<property name="annotationClass" value="cn.springmvc.annotation.MyBatisRepository"></property>
+		<!-- 可以用注解的方式查找dao -->
+		<!-- <property name="annotationClass" value="cn.springmvc.annotation.MyBatisRepository"></property> -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

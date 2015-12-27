@@ -121,7 +121,7 @@ export RABBITMQ_HOME=/Users/CAOLEI/Documents/dev/tools/rabbitmq_server-3.6.0
 export PATH=$RABBITMQ_HOME/sbin:$PATH
 
 sudo scutil --set HostName localhost
-rabbitmq-server
+rabbitmq-server -detached
 rabbitmqctl stop
 rabbitmqctl status
 ```

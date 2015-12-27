@@ -39,7 +39,7 @@
 		<!-- commons-lang3版本 -->
 		<commons-lang3.version>3.3.2</commons-lang3.version>
 		<!-- amqp-client版本 -->
-		<amqp-client.version>3.5.7</amqp-client.version>
+		<amqp-client.version>3.5.4</amqp-client.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -159,7 +159,7 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 		<!-- amqp-client -->
-		<!-- amqp-client-3.5.7.jar -->
+		<!-- amqp-client-3.5.4.jar -->
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>

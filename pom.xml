@@ -42,6 +42,8 @@
 		<amqp-client.version>3.5.4</amqp-client.version>
 		<!-- spring-rabbit.version -->
 		<spring-rabbit.version>1.5.0.RELEASE</spring-rabbit.version>
+		<!-- commons-csv版本 -->
+		<commons-csv.version>1.2</commons-csv.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -176,11 +178,18 @@
 		<!-- httpclient-4.3.6.jar -->
 		<!-- httpcore-4.3.3.jar -->
 		<!-- commons-codec-1.6.jar -->
-		<!--  -->
+		<!-- -->
 		<dependency>
 			<groupId>org.springframework.amqp</groupId>
 			<artifactId>spring-rabbit</artifactId>
 			<version>${spring-rabbit.version}</version>
+		</dependency>
+		<!-- commons-csv -->
+		<!-- commons-csv-1.2.jar -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>${commons-csv.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

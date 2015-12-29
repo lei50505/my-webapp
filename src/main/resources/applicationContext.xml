@@ -28,6 +28,7 @@
 			<list>
 				<value>classpath:db.properties</value>
 				<value>classpath:mq.properties</value>
+				<value>classpath:email.properties</value>
 			</list>
 		</property>
 		<property name="fileEncoding" value="UTF-8" />

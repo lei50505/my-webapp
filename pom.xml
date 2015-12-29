@@ -44,6 +44,8 @@
 		<spring-rabbit.version>1.5.0.RELEASE</spring-rabbit.version>
 		<!-- commons-csv版本 -->
 		<commons-csv.version>1.2</commons-csv.version>
+		<!-- commons-email.version -->
+		<commons-email.version>1.4</commons-email.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -190,6 +192,15 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
 			<version>${commons-csv.version}</version>
+		</dependency>
+		<!-- commons-email -->
+		<!-- commons-email-1.4.jar -->
+		<!-- javax.mail-1.5.2.jar -->
+		<!-- activation-1.1.1.jar -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>${commons-email.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -1,29 +1,73 @@
 package cn.springmvc.util;
 
-import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
 public class CsvUtils {
-    public static void write() throws IOException{
-        CSVFormat csvFormat = CSVFormat.EXCEL;
-        String fileName ="/Users/admin/Desktop/file/a.csv";
-        FileWriter fileWriter = new FileWriter(fileName);
-        CSVPrinter csvPrinter = new CSVPrinter(fileWriter, csvFormat);
-        
-        Object[] header = {"姓名","年龄"};
-        Object[] body = {"张三","20"};
-        csvPrinter.printRecord(header);
-        csvPrinter.printRecord(body);
-        
-        fileWriter.flush();
-        fileWriter.close();
-        csvPrinter.close();
+
+    public static void printStrList(String fileName, List<String[]> strList) {
+        CSVFormat csvFormat = CSVFormat.DEFAULT;
+        PrintWriter printWriter = null;
+        CSVPrinter csvPrinter = null;
+        try {
+            printWriter = new PrintWriter(new BufferedWriter(
+                    new OutputStreamWriter(new FileOutputStream(fileName),
+                            "GBK")));
+            csvPrinter = new CSVPrinter(printWriter, csvFormat);
+            for (String[] strs : strList) {
+                csvPrinter.printRecord((Object[]) strs);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (csvPrinter != null) {
+                    csvPrinter.close();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (printWriter != null) {
+                    printWriter.close();
+                }
+            }
+        }
+
     }
-    
-    public static void main(String[] args) throws IOException {
-        write();
+
+    public static void printStrArray(String fileName, String[][] values) {
+        CSVFormat csvFormat = CSVFormat.DEFAULT;
+        PrintWriter printWriter = null;
+        CSVPrinter csvPrinter = null;
+        try {
+            printWriter = new PrintWriter(new BufferedWriter(
+                    new OutputStreamWriter(new FileOutputStream(fileName),
+                            "GBK")));
+            csvPrinter = new CSVPrinter(printWriter, csvFormat);
+            for (int i = 0; i < values.length; i++) {
+                csvPrinter.printRecord((Object[]) values[i]);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (csvPrinter != null) {
+                    csvPrinter.close();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } finally {
+                if (printWriter != null) {
+                    printWriter.close();
+                }
+            }
+        }
     }
 }

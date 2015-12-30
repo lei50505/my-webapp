@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ import cn.springmvc.entity.User;
 import cn.springmvc.exception.ServiceException;
 import cn.springmvc.mq.producer.Producer;
 import cn.springmvc.service.UserService;
-import cn.springmvc.util.EmailUtils;
 
 //4.0前结合@ResponseBody
 //@Controller
@@ -59,12 +57,6 @@ public class GreetingController {
         producer.sendUser(u);
         return new ResponseEntity<String>("你好",HttpStatus.OK);
     }
-    @RequestMapping(value="/email",method=RequestMethod.GET,produces="text/plain;charset=UTF-8")
-    public ResponseEntity<String> sendEmail() throws EmailException{
-        log.info("sendEmail");
-        EmailUtils.sendEmail("test", "test", "/Users/admin/Downloads/归档 3.zip", "归档 3.zip");
-        
-        return new ResponseEntity<String>("你好",HttpStatus.OK);
-    }
+    
    
 }

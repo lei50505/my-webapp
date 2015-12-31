@@ -44,8 +44,12 @@
 		<spring-rabbit.version>1.5.0.RELEASE</spring-rabbit.version>
 		<!-- commons-csv版本 -->
 		<commons-csv.version>1.2</commons-csv.version>
-		<!-- commons-email.version -->
+		<!-- commons-email版本 -->
 		<commons-email.version>1.4</commons-email.version>
+		<!-- poi版本 -->
+		<poi.version>3.13</poi.version>
+		<!-- poi-ooxml版本 -->
+		<poi-ooxml.version>3.13</poi-ooxml.version>
 	</properties>
 	<dependencies>
 		<!-- junit单元测试 -->
@@ -201,6 +205,24 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
 			<version>${commons-email.version}</version>
+		</dependency>
+		<!-- poi -->
+		<!-- poi-3.13.jar -->
+		<!-- commons-codec-1.6.jar -> commons-codec-1.9.jar -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+		<!-- poi-ooxml -->
+		<!-- poi-ooxml-3.13.jar -->
+		<!-- poi-ooxml-schemas-3.13.jar -->
+		<!-- xmlbeans-2.6.0.jar -->
+		<!-- stax-api-1.0.1.jar -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi-ooxml.version}</version>
 		</dependency>
 	</dependencies>
 	<build>

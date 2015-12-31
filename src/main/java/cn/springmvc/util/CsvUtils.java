@@ -12,13 +12,13 @@ import org.apache.commons.csv.CSVPrinter;
 
 public class CsvUtils {
 
-    public static void printStrList(String fileName, List<String[]> strList) {
+    public static void printStrList(String filePath, List<String[]> strList) {
         CSVFormat csvFormat = CSVFormat.DEFAULT;
         PrintWriter printWriter = null;
         CSVPrinter csvPrinter = null;
         try {
             printWriter = new PrintWriter(new BufferedWriter(
-                    new OutputStreamWriter(new FileOutputStream(fileName),
+                    new OutputStreamWriter(new FileOutputStream(filePath),
                             "GBK")));
             csvPrinter = new CSVPrinter(printWriter, csvFormat);
             for (String[] strs : strList) {
@@ -42,13 +42,13 @@ public class CsvUtils {
 
     }
 
-    public static void printStrArray(String fileName, String[][] values) {
+    public static void printStrArray(String filePath, String[][] values) {
         CSVFormat csvFormat = CSVFormat.DEFAULT;
         PrintWriter printWriter = null;
         CSVPrinter csvPrinter = null;
         try {
             printWriter = new PrintWriter(new BufferedWriter(
-                    new OutputStreamWriter(new FileOutputStream(fileName),
+                    new OutputStreamWriter(new FileOutputStream(filePath),
                             "GBK")));
             csvPrinter = new CSVPrinter(printWriter, csvFormat);
             for (int i = 0; i < values.length; i++) {

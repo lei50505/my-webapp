@@ -17,41 +17,48 @@ public class EmailUtils {
             .getString("email.password");
     private static final String from = ConfigUtils.getString("email.from");
 
-    public static void sendEmail(String subject, String msg, String fileName,
-            String toEmail) {
+    /**
+     * @param subject
+     * @param msg
+     * @param filePath
+     * @param description
+     * @param toEmail
+     * @throws EmailException
+     */
+    public static void sendEmail(String subject, String msg, String filePath,
+            String description, String toEmail) throws EmailException {
         MultiPartEmail multiPartEmail = new MultiPartEmail();
         multiPartEmail.setHostName(hostName);
         multiPartEmail.setAuthentication(userName, password);
         multiPartEmail.setSubject(subject);
         EmailAttachment emailAttachment = new EmailAttachment();
-        emailAttachment.setPath(fileName);
+        emailAttachment.setPath(filePath);
         emailAttachment.setDisposition(EmailAttachment.ATTACHMENT);
-        emailAttachment.setDescription(fileName);
-        try {
-            multiPartEmail.setFrom(from);
-            multiPartEmail.addTo(toEmail);
-            multiPartEmail.setMsg(msg);
-            multiPartEmail.attach(emailAttachment);
-            multiPartEmail.send();
-        } catch (EmailException e) {
-            throw new RuntimeException(e);
-        }
+        emailAttachment.setDescription(description);
+
+        multiPartEmail.setFrom(from);
+        multiPartEmail.addTo(toEmail);
+        multiPartEmail.setMsg(msg);
+        multiPartEmail.attach(emailAttachment);
+        multiPartEmail.send();
     }
 
+    /**
+     * @param subject
+     * @param msg
+     * @param toEmail
+     * @throws EmailException
+     */
     public static void sendSimpleEmail(String subject, String msg,
-            String toEmail) {
+            String toEmail) throws EmailException {
         SimpleEmail simpleEmail = new SimpleEmail();
         simpleEmail.setHostName(hostName);
         simpleEmail.setAuthentication(userName, password);
         simpleEmail.setSubject(subject);
-        try {
-            simpleEmail.addTo(toEmail);
-            simpleEmail.setFrom(from);
-            simpleEmail.setMsg(msg);
-            simpleEmail.send();
-        } catch (EmailException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
+        simpleEmail.setFrom(from);
+        simpleEmail.addTo(toEmail);
+        simpleEmail.setMsg(msg);
+        simpleEmail.send();
+    }
 }

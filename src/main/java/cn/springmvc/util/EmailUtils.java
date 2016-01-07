@@ -1,5 +1,8 @@
 package cn.springmvc.util;
 
+import java.util.HashSet;
+
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.MultiPartEmail;
@@ -60,5 +63,23 @@ public class EmailUtils {
         simpleEmail.addTo(toEmail);
         simpleEmail.setMsg(msg);
         simpleEmail.send();
+    }
+    
+    public static String[] getEmails(String emailStr) {
+        if (StringUtils.isBlank(emailStr)) {
+            return new String[0];
+        }
+        String[] strs = emailStr.trim().split("\\s*,+\\s*");
+        HashSet<String> hashEmails = new HashSet<String>();
+        for (String str : strs) {
+            if (str.matches("^.+@.+$")) {
+                hashEmails.add(str);
+            }
+        }
+        if(hashEmails.size()==0){
+            return new String[0];
+        }
+        String[] emails =  hashEmails.toArray(new String[0]);
+        return emails;
     }
 }

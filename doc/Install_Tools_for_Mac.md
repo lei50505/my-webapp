@@ -5,7 +5,7 @@
 
 ```
 mkdir ~/Documents/dev
-mkdir ~/Documents/dev/repo
+mkdir ~/Documents/dev/repos
 mkdir ~/Documents/dev/tools
 ```
 
@@ -60,7 +60,7 @@ plugins=(git autojump)
 ```
 使用Pkg包安装
 vi ~/.zshrc
-export JAVA_HOME=export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
 ```
 
 * 安装Maven
@@ -75,20 +75,44 @@ export PATH=/Users/CAOLEI/Documents/dev/tools/apache-maven-3.3.9/bin:$PATH
 * 安装Tomcat8
 
 ```
+拷贝apache-tomcat-8.0.30.tar.gz -> 下载
 cd ~/Documents/dev/tools/
 tar -zxvf ~/Downloads/apache-tomcat-8.0.30.tar.gz
 ```
 
-* 安装Spring Tool Suite3.6.4
+* 安装Spring Tool Suite 3.6.4
 
 ```
-sts-bundle -> /Applications
+拷贝spring-tool-suite-3.6.4.RELEASE-e4.4.2-macosx-cocoa-x86_64.tar.gz -> 下载
+双击spring-tool-suite-3.6.4.RELEASE-e4.4.2-macosx-cocoa-x86_64.tar.gz
+拖动sts-bundle -> 应用程序
+Launchpad -> sts-bundle -> 拖动STS -> Launchpad根目录
+
+打开STS
+Select a workspace
+Workspace默认 -> /Users/CAOLEI/Documents/workspace-sts-3.6.4.RELEASE
+选中Use this as the defult... -> OK
+
 Preferences
-Java -> Installed JREs
-Server -> Runtime Environments
-Maven -> Installations
-General -> Editors -> Text Editors -> Insert spaces for tabs
-Java -> Code Style -> Formatter -> New... -> Edit... -> Tab policy -> Spaces only
+Install/Update -> Automatic Update -> 取消Automatically find...
+Java -> Installed JREs -> 选择版本
+Server -> Runtime Environments -> Add... -> Tomcat v8.0 + Create a new... -> OK -> Tomcat installation directory -> dev/tools/apache-tomcat-8.0.30 -> Finish
+Maven -> Installations -> Add... -> Installation home -> dev/tools/apache-maven-3.3.9 -> Finish -> 选择新添加 -> Apply
+General -> Editors -> Text Editors -> 选中Insert spaces for tabs -> OK
+Java -> Code Style -> Formatter -> Edit... -> Tab policy -> 选Spaces only -> Profile name -> 改Spaces only -> OK
+
+布局
+左
+Package Explorer
+下
+Console
+Servers
+Problems
+Progress
+右
+Outline
+
+Confirm Exit -> 选中Always exit without prompt
 ```
 
 * 安装MySQL
